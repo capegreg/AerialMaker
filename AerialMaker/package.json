@@ -1,0 +1,31 @@
+{
+  "name": "aerialmaker",
+  "version": "1.0.0",
+  "description": "executes ArcGIS Rest request to return a PNG map that is saved to disk and added to Oracle db.",
+  "main": "aerialMaker.js",
+  "dependencies": {
+    "@esri/arcgis-rest-auth": "^2.8.1",
+    "@esri/arcgis-rest-request": "^2.8.1",
+    "axios": "^0.19.2",
+    "cross-fetch": "^3.0.4",
+    "isomorphic-form-data": "^2.0.0",
+    "jest": "^25.1.0",
+    "nodemailer": "^6.4.2",
+    "oracledb": "^4.2.0",
+    "os-service": "^2.2.0",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "aerial"
+  ],
+  "author": "Gregory Bologna",
+  "license": "MIT"
+}
