@@ -98,7 +98,7 @@ const getMapYear = () => new Promise((resolve, reject) => {
  */
 async function getAerialExtents(parid) {		
 	
-	let url = `https://gis.xxxpao.com/arcgis/rest/services/Website/WebLayers/MapServer/0/query?where=PARID%3D%27${parid}%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=PARID&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentOnly=true&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=json`;
+	let url = `https://xxxxxxxxx/rest/services/Website/WebLayers/MapServer/0/query?where=PARID%3D%27${parid}%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=PARID&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentOnly=true&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=json`;
 
   let extentsPromise = new Promise((resolve, reject) => {    
 		request(url)
@@ -923,32 +923,32 @@ const insertIdocxField = (parid, document, createdOn) => new Promise((resolve, r
 		var createdBy = 'AERIALMAKER';
 		
 		let binds = [
-				['Tyler.DocumentManager.Domain.StringField', 	1, createdBy, createdOn, document, 'Captured By', 30, null, 'sysadmin	', null, null],
-				['Tyler.DocumentManager.Domain.IntegerField', 1, createdBy, createdOn, document, 'Card', 5,	null, null,	1, null],
-				['Tyler.DocumentManager.Domain.StringField', 	1, createdBy, createdOn, document, 'Jur', 3, null, 	'51',	null, null],
-				['Tyler.DocumentManager.Domain.StringField', 	1, createdBy, createdOn, document, 'Notes', 6, null, null, null, null],
-				['Tyler.DocumentManager.Domain.StringField', 	1, createdBy, createdOn, document, 'Parid', 2, null, parid.toString(), null, null],
-				['Tyler.DocumentManager.Domain.DateField', 		1, createdBy, createdOn, document, 'Photo Capture Date', 29, null, null, null, null],
-				['Tyler.DocumentManager.Domain.ListField', 		1, createdBy, createdOn, document, 'Photo Category', 8, 18, 'Aerial',	null,	null],
-				['Tyler.DocumentManager.Domain.StringField', 	1, createdBy, createdOn, document, 'SubjectXCoord', 72854, null, null, null, null],
-				['Tyler.DocumentManager.Domain.StringField', 	1, createdBy, createdOn, document, 'SubjectYCoord', 72855, null, null, null,null],
-				['Tyler.DocumentManager.Domain.IntegerField', 1, createdBy, createdOn, document, 	'Taxyr', 4,	null, null,	_mapYear, null]
+				['Tyler.DocumentManager.Domain.StringField', 1, createdBy, createdOn, document, 'Captured By', 30, null, 'sysadmin', null, null],
+				['Tyler.DocumentManager.Domain.IntegerField', 1, createdBy, createdOn, document, 'Card', 5,null, null,1, null],
+				['Tyler.DocumentManager.Domain.StringField', 1, createdBy, createdOn, document, 'Jur', 3, null, '51',null, null],
+				['Tyler.DocumentManager.Domain.StringField', 1, createdBy, createdOn, document, 'Notes', 6, null, null, null, null],
+				['Tyler.DocumentManager.Domain.StringField', 1, createdBy, createdOn, document, 'Parid', 2, null, parid.toString(), null, null],
+				['Tyler.DocumentManager.Domain.DateField', 1, createdBy, createdOn, document, 'Photo Capture Date', 29, null, null, null, null],
+				['Tyler.DocumentManager.Domain.ListField', 1, createdBy, createdOn, document, 'Photo Category', 8, 18, 'Aerial',null,null],
+				['Tyler.DocumentManager.Domain.StringField', 1, createdBy, createdOn, document, 'SubjectXCoord', 72854, null, null, null, null],
+				['Tyler.DocumentManager.Domain.StringField', 1, createdBy, createdOn, document, 'SubjectYCoord', 72855, null, null, null,null],
+				['Tyler.DocumentManager.Domain.IntegerField', 1, createdBy, createdOn, document, 'Taxyr', 4,null, null,_mapYear, null]
 			];
 
 		let options = {
 			autoCommit: true,
       bindDefs: [
         { type: oracledb.DB_TYPE_NVARCHAR, maxSize: 255 }, 	// CLASS
-				{ type: oracledb.NUMBER },													// VERSION
+				{ type: oracledb.NUMBER },				// VERSION
 				{ type: oracledb.DB_TYPE_NVARCHAR, maxSize: 255 }, 	// CREATED_BY
-				{ type: oracledb.DB_TYPE_TIMESTAMP_LTZ},						// CREATED_ON
-				{ type: oracledb.NUMBER },													// DOCUMENT
+				{ type: oracledb.DB_TYPE_TIMESTAMP_LTZ},		// CREATED_ON
+				{ type: oracledb.NUMBER },				// DOCUMENT
 				{ type: oracledb.DB_TYPE_NVARCHAR, maxSize: 50 }, 	// NAME
-				{ type: oracledb.NUMBER },													// PROPERTY_TYPE
-				{ type: oracledb.NUMBER },													// LIST_PROPERTY_ITEM
+				{ type: oracledb.NUMBER },			// PROPERTY_TYPE
+				{ type: oracledb.NUMBER },			// LIST_PROPERTY_ITEM
 				{ type: oracledb.DB_TYPE_NVARCHAR, maxSize: 2000 }, // STRING_VALUE
-				{ type: oracledb.NUMBER },													// INTEGER_VALUE
-				{ type: oracledb.DB_TYPE_TIMESTAMP_LTZ }						// DATE_VALUE
+				{ type: oracledb.NUMBER },			// INTEGER_VALUE
+				{ type: oracledb.DB_TYPE_TIMESTAMP_LTZ }	// DATE_VALUE
       ]			
 		};
 
@@ -1152,21 +1152,21 @@ async function run() {
 ************************************************************ */
 
 // gis endpoints
-let _mapLayerAndLabelsUrl 		= "https://gis.xxx.com/arcgis/rest/services/Website/WebLayers/MapServer";
-let _latestYearAerialUrl 			= "https://www.xxx.org/gisimg/rest/services/current/aerials/ImageServer";
-let _printServiceUrl 					= "https://gis.xxx.com/arcgis/rest/services/Website/AerialMaker/GPServer/Export%20Web%20Map";
-let _map_meta_url 						= 'https://www.xxx.org/gisimg/rest/services/current/aerials/ImageServer?f=json';
+let _mapLayerAndLabelsUrl 		= "https://xxxxxxxxx/rest/services/Website/WebLayers/MapServer";
+let _latestYearAerialUrl 		= "https://xxxxxxxxx/gisimg/rest/services/current/aerials/ImageServer";
+let _printServiceUrl 			= "https://xxxxxxxxx/rest/services/Website/AerialMaker/GPServer/Export%20Web%20Map";
+let _map_meta_url 			= 'https://xxxxxxxxx/gisimg/rest/services/current/aerials/ImageServer?f=json';
 
 // current runtime environment
-const IMAGE_ENV 							= "";
+const IMAGE_ENV 			= "";
 
 // current runtime aerial images saveto folder
-var _exportfolder 						= `\\\\${IMAGE_ENV}\\Photos\\`;
-let logs_parent_folder				= '\\\\Aerialmaker\\';
+var _exportfolder 			= `\\\\${IMAGE_ENV}\\Photos\\`;
+let logs_parent_folder			= '\\\\Aerialmaker\\';
 
 // GIS parcel problems log will go here
-let _mapping_folder						= '\\\\Mapping\\Reports';
-let _missing_folder						= '\\\\gis_reports';
+let _mapping_folder			= '\\\\Mapping\\Reports';
+let _missing_folder			= '\\\\gis_reports';
 
 /* ******************************************
 log name 	= _missing_gis_rpt
@@ -1175,7 +1175,7 @@ location	= put in _mapping_folder
 format 		= 1 blank line at top
 ****************************************** */
 let _missing_gis_rpt_fn				= '1_missing_gis_features.txt';
-let _missing_gis_rpt 					= `${_mapping_folder}\\${_missing_gis_rpt_fn}`;
+let _missing_gis_rpt 				= `${_mapping_folder}\\${_missing_gis_rpt_fn}`;
 
 /* ******************************************
 log name	= _missed_gis_hdr_rpt
@@ -1188,12 +1188,12 @@ let _missed_gis_hdr_fn				= `missing_gis_features_header.txt`;
 let _missed_gis_hdr_rpt				= `${_missing_folder}\\${_missed_gis_hdr_fn}`;
 
 // log names
-let _export_logs 							= `aerialmaker-export-${_logFileDate}.log`;
-let _error_logs 							= `aerialmaker-error-${_logFileDate}.log`;
+let _export_logs 				= `aerialmaker-export-${_logFileDate}.log`;
+let _error_logs 				= `aerialmaker-error-${_logFileDate}.log`;
 
 // log sub folders
 let _aerialmaker_export_log 	= `${logs_parent_folder}export_logs\\${_export_logs}`;
-let _aerialmaker_error_log		= `${logs_parent_folder}error_logs\\${_error_logs}`;
+let _aerialmaker_error_log	= `${logs_parent_folder}error_logs\\${_error_logs}`;
 
 
 // collection of errors for logs
